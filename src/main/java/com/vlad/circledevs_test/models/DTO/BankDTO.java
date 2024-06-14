@@ -15,4 +15,8 @@ public class BankDTO {
   private String address;
   private List<CustomerDTO> customers;
 
+  public BankDTO(String title, String address) {
+    this.title = title;
+    this.address = address;
+  }
 }

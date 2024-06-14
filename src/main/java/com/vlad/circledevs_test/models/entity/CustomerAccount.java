@@ -8,14 +8,12 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
 @Entity
 @Table(name = "account")
-@AllArgsConstructor
 @NoArgsConstructor
 public class CustomerAccount {
   @Id
@@ -29,6 +27,11 @@ public class CustomerAccount {
   @Column(name = "cash_amount")
   private int cashAmount;
   @ManyToOne
-  @JoinColumn(name = "customer_id")
+  @JoinColumn(name = "customer_id", nullable = false)
   private Customer customer;
+
+  public CustomerAccount(String password, String username) {
+    this.password = password;
+    this.username = username;
+  }
 }
