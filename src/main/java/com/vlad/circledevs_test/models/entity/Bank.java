@@ -30,7 +30,7 @@ public class Bank {
   @Column(name = "address")
   private String address;
   @OneToMany(cascade = CascadeType.ALL)
-  @JoinColumn(name = "customer_id")
+  @JoinColumn(name = "bank_id")
   private List<Customer> customers;
 
 }

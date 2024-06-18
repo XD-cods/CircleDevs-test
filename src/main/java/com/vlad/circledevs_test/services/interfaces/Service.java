@@ -9,5 +9,9 @@ public interface Service <T>{
 
   public void save(T customer);
 
-  public void delete(T customer);
+  public void deleteById(Integer id);
+
+  public void update(T customer);
+
+  public List<T> findAllById(List<Integer> ids);
 }

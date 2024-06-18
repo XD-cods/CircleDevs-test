@@ -27,12 +27,22 @@ public class BankServiceImpl implements BankService {
   }
 
   @Override
-  public void save(Bank customer) {
-    bankRepo.save(customer);
+  public void save(Bank bank) {
+    bankRepo.save(bank);
   }
 
   @Override
-  public void delete(Bank customer) {
-    bankRepo.delete(customer);
+  public void deleteById(Integer id) {
+    bankRepo.deleteById(id);
+  }
+
+  @Override
+  public void update(Bank bank) {
+    bankRepo.save(bank);
+  }
+
+  @Override
+  public List<Bank> findAllById(List<Integer> ids) {
+    return bankRepo.findAllById(ids);
   }
 }

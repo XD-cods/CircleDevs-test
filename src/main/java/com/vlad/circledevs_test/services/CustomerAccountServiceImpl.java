@@ -27,12 +27,22 @@ public class CustomerAccountServiceImpl implements CustomerAccountService {
   }
 
   @Override
-  public void save(CustomerAccount customer) {
-    customerAccountRepo.save(customer);
+  public void save(CustomerAccount customerAccount) {
+    customerAccountRepo.save(customerAccount);
   }
 
   @Override
-  public void delete(CustomerAccount customer) {
-    customerAccountRepo.delete(customer);
+  public void deleteById(Integer id) {
+    customerAccountRepo.deleteById(id);
+  }
+
+  @Override
+  public void update(CustomerAccount customerAccount) {
+    customerAccountRepo.save(customerAccount);
+  }
+
+  @Override
+  public List<CustomerAccount> findAllById(List<Integer> ids) {
+    return customerAccountRepo.findAllById(ids);
   }
 }

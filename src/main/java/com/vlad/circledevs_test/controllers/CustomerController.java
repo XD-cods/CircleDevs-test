@@ -1,6 +1,6 @@
 package com.vlad.circledevs_test.controllers;
 
-import com.vlad.circledevs_test.models.DTO.BankDTO;
+import com.vlad.circledevs_test.models.DTO.CustomerDTO;
 import com.vlad.circledevs_test.util.ServiceFacade;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -10,21 +10,21 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("bank")
-public class BankController {
+@RequestMapping("customer")
+public class CustomerController {
   private final ServiceFacade serviceFacade;
 
-  public BankController(ServiceFacade serviceFacade) {
+  public CustomerController(ServiceFacade serviceFacade) {
     this.serviceFacade = serviceFacade;
   }
 
   @GetMapping
-  public List<BankDTO> getAllBank() {
-    return serviceFacade.getAllBank();
+  public List<CustomerDTO> getAllCustomers() {
+    return serviceFacade.getAllCustomer();
   }
 
   @GetMapping("{id}")
-  public BankDTO getBankById(@PathVariable int id) {
-    return serviceFacade.getBankById(id);
+  public CustomerDTO getCustomerById(@PathVariable int id) {
+    return serviceFacade.getCustomerById(id);
   }
 }

@@ -30,6 +30,6 @@ public class Customer {
   @Column(name = "last_name")
   private String lastName;
   @OneToMany(cascade = CascadeType.ALL)
-  @JoinColumn(name = "account_id")
+  @JoinColumn(name = "customer_id")
   private List<CustomerAccount> customerAccounts;
 }
