@@ -3,16 +3,16 @@ package com.vlad.circledevs_test.services;
 
 import com.vlad.circledevs_test.models.entity.Customer;
 import com.vlad.circledevs_test.repositories.CustomerRepo;
-import com.vlad.circledevs_test.services.interfaces.CustomerServiceInterface;
+import com.vlad.circledevs_test.services.interfaces.CustomerService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class CustomerService implements CustomerServiceInterface {
+public class CustomerServiceImpl implements CustomerService {
   private final CustomerRepo customerRepo;
 
-  public CustomerService(CustomerRepo customerRepo) {
+  public CustomerServiceImpl(CustomerRepo customerRepo) {
     this.customerRepo = customerRepo;
   }
 

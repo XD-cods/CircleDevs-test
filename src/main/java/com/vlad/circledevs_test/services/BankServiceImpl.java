@@ -3,16 +3,16 @@ package com.vlad.circledevs_test.services;
 
 import com.vlad.circledevs_test.models.entity.Bank;
 import com.vlad.circledevs_test.repositories.BankRepo;
-import com.vlad.circledevs_test.services.interfaces.BankServiceInterface;
+import com.vlad.circledevs_test.services.interfaces.BankService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class BankService implements BankServiceInterface {
+public class BankServiceImpl implements BankService {
   private final BankRepo bankRepo;
 
-  public BankService(BankRepo bankRepo) {
+  public BankServiceImpl(BankRepo bankRepo) {
     this.bankRepo = bankRepo;
   }
 

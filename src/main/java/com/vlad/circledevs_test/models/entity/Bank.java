@@ -9,6 +9,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -16,6 +17,7 @@ import java.util.List;
 
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "bank")
 public class Bank {
@@ -31,8 +33,4 @@ public class Bank {
   @JoinColumn(name = "customer_id")
   private List<Customer> customers;
 
-  public Bank(String address, String title) {
-    this.address = address;
-    this.title = title;
-  }
 }

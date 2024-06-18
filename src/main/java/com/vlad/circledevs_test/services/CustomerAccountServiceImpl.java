@@ -3,16 +3,16 @@ package com.vlad.circledevs_test.services;
 
 import com.vlad.circledevs_test.models.entity.CustomerAccount;
 import com.vlad.circledevs_test.repositories.CustomerAccountRepo;
-import com.vlad.circledevs_test.services.interfaces.CustomerAccountServiceInterface;
+import com.vlad.circledevs_test.services.interfaces.CustomerAccountService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class CustomerAccountService implements CustomerAccountServiceInterface {
+public class CustomerAccountServiceImpl implements CustomerAccountService {
   private final CustomerAccountRepo customerAccountRepo;
 
-  public CustomerAccountService(CustomerAccountRepo customerAccountRepo) {
+  public CustomerAccountServiceImpl(CustomerAccountRepo customerAccountRepo) {
     this.customerAccountRepo = customerAccountRepo;
   }
 

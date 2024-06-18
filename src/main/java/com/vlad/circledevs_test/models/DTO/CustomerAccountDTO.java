@@ -13,10 +13,5 @@ public class CustomerAccountDTO {
   private String username;
   private String password;
   private int cashAmount;
-  private CustomerDTO customer;
 
-  public CustomerAccountDTO(String username, String password) {
-    this.username = username;
-    this.password = password;
-  }
 }

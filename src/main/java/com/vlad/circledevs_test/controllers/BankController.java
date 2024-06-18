@@ -1,6 +1,6 @@
 package com.vlad.circledevs_test.controllers;
 
-import com.vlad.circledevs_test.FacadeImpl;
+import com.vlad.circledevs_test.util.ServiceFacadeImpl;
 import com.vlad.circledevs_test.models.DTO.BankDTO;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,9 +11,9 @@ import java.util.List;
 @RestController
 @RequestMapping("/bank")
 public class BankController {
-  private final FacadeImpl facadeImpl;
+  private final ServiceFacadeImpl facadeImpl;
 
-  public BankController(FacadeImpl facadeImpl) {
+  public BankController(ServiceFacadeImpl facadeImpl) {
     this.facadeImpl = facadeImpl;
   }
 

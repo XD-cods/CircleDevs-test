@@ -1,4 +1,4 @@
-package com.vlad.circledevs_test;
+package com.vlad.circledevs_test.util;
 
 
 import com.vlad.circledevs_test.models.DTO.BankDTO;
@@ -7,15 +7,12 @@ import com.vlad.circledevs_test.models.DTO.CustomerDTO;
 
 import java.util.List;
 
-public interface Facade {
-  public void createBank();
-
-
+public interface ServiceFacade {
   List<BankDTO> getAllBank();
 
   List<CustomerDTO> getAllCustomer();
 
-  List<CustomerDTO> getAllCustomerAccount();
+  List<CustomerAccountDTO> getAllCustomerAccount();
 
   BankDTO getBankById(Integer id);
 
@@ -23,16 +20,15 @@ public interface Facade {
 
   CustomerAccountDTO getCustomerAccountById(Integer id);
 
-
   void deleteBank(Integer id);
 
   void deleteCustomer(Integer id);
 
   void deleteAccount(Integer id);
 
-  BankDTO createBank(String address, String title);
+  BankDTO createBank(BankDTO bankDTO);
 
-  CustomerDTO createCustomer();
+  CustomerDTO createCustomer(CustomerDTO customer);
 
-  CustomerAccountDTO createAccount();
+  CustomerAccountDTO createAccount(CustomerAccountDTO customer);
 }
