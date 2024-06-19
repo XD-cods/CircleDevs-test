@@ -1,9 +1,10 @@
 package com.vlad.circledevs_test.controllers;
 
 import com.vlad.circledevs_test.models.DTO.BankDTO;
-import com.vlad.circledevs_test.util.ServiceFacade;
+import com.vlad.circledevs_test.util.facades.interfaces.BankFacade;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -15,29 +16,30 @@ import java.util.List;
 @RestController
 @RequestMapping("bank")
 public class BankController {
-  private final ServiceFacade serviceFacade;
+  private final BankFacade bankFacade;
 
-  public BankController(ServiceFacade serviceFacade) {
-    this.serviceFacade = serviceFacade;
+  public BankController(BankFacade bankFacade) {
+    this.bankFacade = bankFacade;
   }
 
   @GetMapping
   public List<BankDTO> getAllBank() {
-    return serviceFacade.getAllBank();
+    return bankFacade.getAll();
   }
 
   @GetMapping("{id}")
   public BankDTO getBankById(@PathVariable int id) {
-    return serviceFacade.getBankById(id);
+    return bankFacade.getById(id);
   }
 
   @PostMapping
   public BankDTO addBank(@RequestBody BankDTO bank) {
-    return serviceFacade.createBank(bank);
+    return bankFacade.create(bank);
   }
 
-  @PatchMapping
-  public BankDTO updateBank(@RequestBody BankDTO bank) {
-    return serviceFacade.updateBank(bank);
+  @DeleteMapping("{id}")
+  public HttpStatus deleteBank(@PathVariable int id) {
+    bankFacade.delete(id);
+    return HttpStatus.OK;
   }
 }

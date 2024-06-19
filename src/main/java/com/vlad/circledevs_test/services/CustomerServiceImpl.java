@@ -36,8 +36,4 @@ public class CustomerServiceImpl implements CustomerService {
     customerRepo.deleteById(id);
   }
 
-  @Override
-  public Customer update(Customer customer) {
-    return customerRepo.save(customer);
-  }
 }

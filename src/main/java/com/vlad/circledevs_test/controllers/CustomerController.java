@@ -1,9 +1,10 @@
 package com.vlad.circledevs_test.controllers;
 
 import com.vlad.circledevs_test.models.DTO.CustomerDTO;
-import com.vlad.circledevs_test.util.ServiceFacade;
+import com.vlad.circledevs_test.util.facades.interfaces.CustomerFacade;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -15,29 +16,31 @@ import java.util.List;
 @RestController
 @RequestMapping("customer")
 public class CustomerController {
-  private final ServiceFacade serviceFacade;
+  private final CustomerFacade customerFacade;
 
-  public CustomerController(ServiceFacade serviceFacade) {
-    this.serviceFacade = serviceFacade;
+  public CustomerController(CustomerFacade customerFacade) {
+    this.customerFacade = customerFacade;
   }
 
   @GetMapping
   public List<CustomerDTO> getAllCustomers() {
-    return serviceFacade.getAllCustomer();
+    return customerFacade.getAll();
   }
 
   @GetMapping("{id}")
   public CustomerDTO getCustomerById(@PathVariable int id) {
-    return serviceFacade.getCustomerById(id);
+    return customerFacade.getById(id);
   }
 
   @PostMapping
   public CustomerDTO addAccount(@RequestBody CustomerDTO customer) {
-    return serviceFacade.createCustomer(customer);
+    return customerFacade.create(customer);
   }
 
-  @PatchMapping
-  public CustomerDTO updateBank(@RequestBody CustomerDTO customer) {
-    return serviceFacade.updateCustomer(customer);
+
+  @DeleteMapping("{id}")
+  public HttpStatus deleteById(@PathVariable int id) {
+    customerFacade.delete(id);
+    return HttpStatus.OK;
   }
 }

@@ -31,5 +31,5 @@ public class Customer {
   private String lastName;
   @OneToMany(cascade = CascadeType.ALL)
   @JoinColumn(name = "customer_id")
-  private List<CustomerAccount> customerAccounts;
+  private List<Account> accounts;
 }

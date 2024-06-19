@@ -10,6 +10,4 @@ public interface Service<T> {
   public T save(T customer);
 
   public void deleteById(Integer id);
-
-  public T update(T customer);
 }

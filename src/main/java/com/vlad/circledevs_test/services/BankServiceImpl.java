@@ -36,8 +36,4 @@ public class BankServiceImpl implements BankService {
     bankRepo.deleteById(id);
   }
 
-  @Override
-  public Bank update(Bank bank) {
-    return bankRepo.save(bank);
-  }
 }
