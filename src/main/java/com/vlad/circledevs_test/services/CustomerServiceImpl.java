@@ -23,13 +23,12 @@ public class CustomerServiceImpl implements CustomerService {
 
   @Override
   public Customer findById(int id) {
-    System.out.println(customerRepo.findById(id).get().getCustomerAccounts().size());
     return customerRepo.findById(id).orElse(null);
   }
 
   @Override
-  public void save(Customer customer) {
-    customerRepo.save(customer);
+  public Customer save(Customer customer) {
+    return customerRepo.save(customer);
   }
 
   @Override
@@ -38,12 +37,7 @@ public class CustomerServiceImpl implements CustomerService {
   }
 
   @Override
-  public void update(Customer customer) {
-    customerRepo.save(customer);
-  }
-
-  @Override
-  public List<Customer> findAllById(List<Integer> ids) {
-    return customerRepo.findAllById(ids);
+  public Customer update(Customer customer) {
+    return customerRepo.save(customer);
   }
 }

@@ -27,8 +27,8 @@ public class CustomerAccountServiceImpl implements CustomerAccountService {
   }
 
   @Override
-  public void save(CustomerAccount customerAccount) {
-    customerAccountRepo.save(customerAccount);
+  public CustomerAccount save(CustomerAccount customerAccount) {
+    return customerAccountRepo.save(customerAccount);
   }
 
   @Override
@@ -37,12 +37,8 @@ public class CustomerAccountServiceImpl implements CustomerAccountService {
   }
 
   @Override
-  public void update(CustomerAccount customerAccount) {
-    customerAccountRepo.save(customerAccount);
+  public CustomerAccount update(CustomerAccount customerAccount) {
+    return customerAccountRepo.save(customerAccount);
   }
 
-  @Override
-  public List<CustomerAccount> findAllById(List<Integer> ids) {
-    return customerAccountRepo.findAllById(ids);
-  }
 }

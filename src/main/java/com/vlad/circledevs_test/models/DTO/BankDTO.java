@@ -14,5 +14,4 @@ public class BankDTO {
   private String title;
   private String address;
   private List<CustomerDTO> customers;
-
 }

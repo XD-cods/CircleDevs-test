@@ -26,9 +26,15 @@ public interface ServiceFacade {
 
   void deleteAccount(Integer id);
 
-  BankDTO createBank(BankDTO bankDTO);
+  BankDTO createBank(BankDTO bankRequest);
 
   CustomerDTO createCustomer(CustomerDTO customer);
 
   CustomerAccountDTO createAccount(CustomerAccountDTO customer);
+
+  BankDTO updateBank(BankDTO bankRequest);
+
+  CustomerDTO updateCustomer(CustomerDTO customer);
+
+  CustomerAccountDTO updateAccount(CustomerAccountDTO customer);
 }

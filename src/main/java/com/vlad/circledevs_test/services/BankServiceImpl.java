@@ -27,8 +27,8 @@ public class BankServiceImpl implements BankService {
   }
 
   @Override
-  public void save(Bank bank) {
-    bankRepo.save(bank);
+  public Bank save(Bank bank) {
+    return bankRepo.save(bank);
   }
 
   @Override
@@ -37,12 +37,7 @@ public class BankServiceImpl implements BankService {
   }
 
   @Override
-  public void update(Bank bank) {
-    bankRepo.save(bank);
-  }
-
-  @Override
-  public List<Bank> findAllById(List<Integer> ids) {
-    return bankRepo.findAllById(ids);
+  public Bank update(Bank bank) {
+    return bankRepo.save(bank);
   }
 }

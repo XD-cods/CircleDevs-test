@@ -1,6 +1,5 @@
 package com.vlad.circledevs_test.models.DTO;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,5 +12,4 @@ public class CustomerAccountDTO {
   private String username;
   private String password;
   private int cashAmount;
-
 }

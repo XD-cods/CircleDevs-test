@@ -57,7 +57,6 @@ public class ServiceFacadeImpl implements ServiceFacade {
 
   @Override
   public BankDTO getBankById(Integer id) {
-    bankService.findById(id).getCustomers().forEach(customer -> System.out.println(customer.getId()));
     return modelMapper.map(bankService.findById(id), BankDTO.class);
   }
 
@@ -87,20 +86,40 @@ public class ServiceFacadeImpl implements ServiceFacade {
   }
 
   @Override
-  public BankDTO createBank(BankDTO bankDTO) {
-    bankService.save(modelMapper.map(bankDTO, Bank.class));
-    return bankDTO;
+  public BankDTO createBank(BankDTO bank) {
+    Bank newBank = bankService.save(modelMapper.map(bank, Bank.class));
+    return modelMapper.map(newBank, BankDTO.class);
   }
 
   @Override
-  public CustomerDTO createCustomer(CustomerDTO customerDTO) {
-    customerService.save(modelMapper.map(customerDTO, Customer.class));
-    return customerDTO;
+  public CustomerDTO createCustomer(CustomerDTO customer) {
+    Customer newCustomer = customerService.save(modelMapper.map(customer, Customer.class));
+    return modelMapper.map(newCustomer, CustomerDTO.class);
   }
 
   @Override
-  public CustomerAccountDTO createAccount(CustomerAccountDTO customerAccountDTO) {
-    customerAccountService.save(modelMapper.map(customerAccountDTO, CustomerAccount.class));
-    return customerAccountDTO;
+  public CustomerAccountDTO createAccount(CustomerAccountDTO customerAccount) {
+    CustomerAccount newCustomerAccount = customerAccountService.save(modelMapper.map(customerAccount,
+            CustomerAccount.class));
+    return modelMapper.map(newCustomerAccount,CustomerAccountDTO.class);
+  }
+
+  @Override
+  public CustomerAccountDTO updateAccount(CustomerAccountDTO customer) {
+    CustomerAccount newCustomerAccount = customerAccountService.save(modelMapper.map(customer,
+            CustomerAccount.class));
+    return modelMapper.map(newCustomerAccount,CustomerAccountDTO.class);
+  }
+
+  @Override
+  public BankDTO updateBank(BankDTO bank) {
+    Bank newBank = bankService.save(modelMapper.map(bank, Bank.class));
+    return modelMapper.map(newBank, BankDTO.class);
+  }
+
+  @Override
+  public CustomerDTO updateCustomer(CustomerDTO customer) {
+    Customer newCustomer = customerService.save(modelMapper.map(customer, Customer.class));
+    return modelMapper.map(newCustomer, CustomerDTO.class);
   }
 }
