@@ -45,12 +45,23 @@ Stack:
   компоненты их, а не классы.
 - есть неиспользуемые импорты в классах
 
-**Перед запуском**
+**Перед запуском и тестами**
 
-Установите postgreSQL и добавьте данные в application.properties.
+Установите postgreSQL и добавьте данные в src/main/resources/application.properties.
+```properties
+spring.datasource.url= your JDBC URI
+spring.datasource.password= your password
+spring.datasource.username= your usename
+
+```
+
 Выполните скрипт создания таблиц расположенный в папке sripts create_db.sql и можете выполнить 2 скрипт для создания
 тестовых данных create_data.sql
 
 **Тестирование**
 
-Запустите приложение, а затем запустите тесты
+выполните команду ./mvnw test
+
+**Запуск приложения**
+
+выполните команду ./mvnw spring-boot:run
