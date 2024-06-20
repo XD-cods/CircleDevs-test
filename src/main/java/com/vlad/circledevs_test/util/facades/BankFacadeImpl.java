@@ -32,8 +32,8 @@ public class BankFacadeImpl implements BankFacade {
   }
 
   @Override
-  public void delete(Integer id) {
-    bankService.deleteById(id);
+  public void delete(BankDTO bankDTO) {
+    bankService.delete(modelMapper.map(bankDTO, Bank.class));
 
   }
 
@@ -43,4 +43,13 @@ public class BankFacadeImpl implements BankFacade {
     return modelMapper.map(newBank, BankDTO.class);
   }
 
+  @Override
+  public Boolean existById(int id) {
+    return bankService.existsById(id);
+  }
+
+  @Override
+  public Boolean existBankByTitle(String title) {
+    return bankService.existBankByTitle(title);
+  }
 }

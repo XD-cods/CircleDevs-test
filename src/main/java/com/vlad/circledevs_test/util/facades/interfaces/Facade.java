@@ -7,7 +7,11 @@ public interface Facade<T> {
 
   T getById(Integer id);
 
-  void delete(Integer id);
+  void delete(T t);
 
   T create(T t);
+
+  Boolean existById(int id);
 }
+
+

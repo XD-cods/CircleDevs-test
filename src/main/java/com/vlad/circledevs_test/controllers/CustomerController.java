@@ -3,6 +3,7 @@ package com.vlad.circledevs_test.controllers;
 import com.vlad.circledevs_test.models.DTO.CustomerDTO;
 import com.vlad.circledevs_test.util.facades.interfaces.CustomerFacade;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -28,19 +29,27 @@ public class CustomerController {
   }
 
   @GetMapping("{id}")
-  public CustomerDTO getCustomerById(@PathVariable int id) {
-    return customerFacade.getById(id);
+  public ResponseEntity<CustomerDTO> getCustomerById(@PathVariable int id) {
+    if (!customerFacade.existById(id)) {
+      return ResponseEntity.notFound().build();
+    }
+    CustomerDTO customerDTO = customerFacade.getById(id);
+    return ResponseEntity.ok(customerDTO);
   }
 
   @PostMapping
-  public CustomerDTO addAccount(@RequestBody CustomerDTO customer) {
-    return customerFacade.create(customer);
+  public ResponseEntity<CustomerDTO> addAccount(@RequestBody CustomerDTO customer) {
+    return ResponseEntity.ok(customerFacade.create(customer));
   }
 
 
   @DeleteMapping("{id}")
-  public HttpStatus deleteById(@PathVariable int id) {
-    customerFacade.delete(id);
-    return HttpStatus.OK;
+  public ResponseEntity<CustomerDTO> deleteById(@PathVariable int id) {
+    if (!customerFacade.existById(id)) {
+      return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+    }
+    CustomerDTO customer = customerFacade.getById(id);
+    customerFacade.delete(customer);
+    return ResponseEntity.noContent().build();
   }
 }

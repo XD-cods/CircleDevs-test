@@ -12,6 +12,6 @@ import java.util.List;
 public class BankDTO {
   private Integer id;
   private String title;
-  private String address;
   private List<CustomerDTO> customers;
+
 }

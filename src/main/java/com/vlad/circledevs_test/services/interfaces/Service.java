@@ -9,5 +9,7 @@ public interface Service<T> {
 
   public T save(T customer);
 
-  public void deleteById(Integer id);
+  public void delete(T t);
+
+  public Boolean existsById(int id);
 }

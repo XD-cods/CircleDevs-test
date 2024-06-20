@@ -26,6 +26,11 @@ public class AccountFacadeImpl implements AccountFacade {
   }
 
   @Override
+  public Boolean existById(int id) {
+    return accountService.existsById(id);
+  }
+
+  @Override
   public List<AccountDTO> getAll() {
     return accountService.findAll()
             .stream()
@@ -40,9 +45,13 @@ public class AccountFacadeImpl implements AccountFacade {
   }
 
   @Override
-  public void delete(Integer id) {
-    accountService.deleteById(id);
+  public void delete(AccountDTO account) {
+    accountService.delete(modelMapper.map(account, Account.class));
 
   }
 
+  @Override
+  public Boolean existByUsername(String username) {
+    return accountService.existsByUserName(username);
+  }
 }

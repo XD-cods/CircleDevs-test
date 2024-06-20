@@ -27,8 +27,6 @@ public class Bank {
   private Integer id;
   @Column(name = "bank_title")
   private String title;
-  @Column(name = "address")
-  private String address;
   @OneToMany(cascade = CascadeType.ALL)
   @JoinColumn(name = "bank_id")
   private List<Customer> customers;

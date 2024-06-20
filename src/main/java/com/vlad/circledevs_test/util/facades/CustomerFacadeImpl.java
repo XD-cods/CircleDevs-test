@@ -33,8 +33,8 @@ public class CustomerFacadeImpl implements CustomerFacade {
   }
 
   @Override
-  public void delete(Integer id) {
-    customerService.deleteById(id);
+  public void delete(CustomerDTO customerDTO) {
+    customerService.delete(modelMapper.map(customerDTO, Customer.class));
 
   }
 
@@ -42,6 +42,11 @@ public class CustomerFacadeImpl implements CustomerFacade {
   public CustomerDTO create(CustomerDTO customerDTO) {
     Customer newCustomer = customerService.save(modelMapper.map(customerDTO, Customer.class));
     return modelMapper.map(newCustomer, CustomerDTO.class);
+  }
+
+  @Override
+  public Boolean existById(int id) {
+    return customerService.existsById(id);
   }
 
 }

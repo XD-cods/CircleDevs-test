@@ -32,8 +32,17 @@ public class AccountServiceImpl implements AccountService {
   }
 
   @Override
-  public void deleteById(Integer id) {
-    accountRepo.deleteById(id);
+  public void delete(Account account) {
+    accountRepo.delete(account);
   }
 
+  @Override
+  public Boolean existsById(int id) {
+    return accountRepo.existsById(id);
+  }
+
+  @Override
+  public Boolean existsByUserName(String userName) {
+    return accountRepo.existsByUsername(userName);
+  }
 }

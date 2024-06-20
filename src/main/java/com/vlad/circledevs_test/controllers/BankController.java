@@ -3,6 +3,7 @@ package com.vlad.circledevs_test.controllers;
 import com.vlad.circledevs_test.models.DTO.BankDTO;
 import com.vlad.circledevs_test.util.facades.interfaces.BankFacade;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,23 +24,34 @@ public class BankController {
   }
 
   @GetMapping
-  public List<BankDTO> getAllBank() {
-    return bankFacade.getAll();
+  public ResponseEntity<List<BankDTO>> getAllBank() {
+    return ResponseEntity.ok(bankFacade.getAll());
   }
 
   @GetMapping("{id}")
-  public BankDTO getBankById(@PathVariable int id) {
-    return bankFacade.getById(id);
+  public ResponseEntity<BankDTO> getBankById(@PathVariable int id) {
+    if (!bankFacade.existById(id)) {
+      return ResponseEntity.notFound().build();
+    }
+    BankDTO bankDTO = bankFacade.getById(id);
+    return ResponseEntity.ok(bankDTO);
   }
 
   @PostMapping
-  public BankDTO addBank(@RequestBody BankDTO bank) {
-    return bankFacade.create(bank);
+  public ResponseEntity<BankDTO> addBank(@RequestBody BankDTO bank) {
+    if (bankFacade.existBankByTitle(bank.getTitle())) {
+      return ResponseEntity.status(HttpStatus.CONFLICT).build();
+    }
+    return ResponseEntity.ok(bankFacade.create(bank));
   }
 
   @DeleteMapping("{id}")
-  public HttpStatus deleteBank(@PathVariable int id) {
-    bankFacade.delete(id);
-    return HttpStatus.OK;
+  public ResponseEntity<String> deleteBank(@PathVariable int id) {
+    if (!bankFacade.existById(id)) {
+      return ResponseEntity.notFound().build();
+    }
+    BankDTO bankDTO = bankFacade.getById(id);
+    bankFacade.delete(bankDTO);
+    return ResponseEntity.noContent().build();
   }
 }

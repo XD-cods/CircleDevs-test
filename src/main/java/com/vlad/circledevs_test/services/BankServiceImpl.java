@@ -32,8 +32,17 @@ public class BankServiceImpl implements BankService {
   }
 
   @Override
-  public void deleteById(Integer id) {
-    bankRepo.deleteById(id);
+  public void delete(Bank bank) {
+    bankRepo.delete(bank);
   }
 
+  @Override
+  public Boolean existsById(int id) {
+    return bankRepo.existsById(id);
+  }
+
+  @Override
+  public Boolean existBankByTitle(String title) {
+    return bankRepo.existsBankByTitle(title);
+  }
 }
