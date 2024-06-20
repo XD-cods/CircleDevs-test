@@ -60,8 +60,13 @@ spring.datasource.username= your usename
 
 **Тестирование**
 
-выполните команду ./mvnw test
-
+выполните команду 
+```bash
+./mvnw test
+```
 **Запуск приложения**
 
-выполните команду ./mvnw spring-boot:run
+выполните команду
+```bash
+./mvnw spring-boot:run
+```
